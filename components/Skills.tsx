@@ -1,66 +1,207 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  FaJava,
-  FaPython,
-  FaReact,
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaGitAlt,
-  FaGithub,
-} from "react-icons/fa";
-import { SiC, SiMongodb, SiMysql } from "react-icons/si";
+import { useState } from "react";
 
-const skills = [
-  // Programming
-  { name: "Java", icon: <FaJava />, category: "Programming" },
-  { name: "Python", icon: <FaPython />, category: "Programming" },
-  { name: "C", icon: <SiC />, category: "Programming" },
+type Skill = {
+  name: string;
+  icon: string;
+  color: string;
+};
 
-  // Web
-  { name: "React", icon: <FaReact />, category: "Web Development" },
-  { name: "HTML", icon: <FaHtml5 />, category: "Web Development" },
-  { name: "CSS", icon: <FaCss3Alt />, category: "Web Development" },
-  { name: "JavaScript", icon: <FaJs />, category: "Web Development" },
+type Category = {
+  label: string;
+  skills: Skill[];
+};
 
-  // Tools
-  { name: "Git", icon: <FaGitAlt />, category: "Tools" },
-  { name: "GitHub", icon: <FaGithub />, category: "Tools" },
-
-  // Databases
-  { name: "MongoDB", icon: <SiMongodb />, category: "Databases" },
-  { name: "MySQL", icon: <SiMysql />, category: "Databases" },
+const skillCategories: Category[] = [
+  {
+    label: "Languages",
+    skills: [
+      {
+        name: "Python",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+        color: "hover:border-yellow-400 hover:shadow-yellow-100 dark:hover:shadow-yellow-900/30",
+      },
+      {
+        name: "Java",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+        color: "hover:border-red-400 hover:shadow-red-100 dark:hover:shadow-red-900/30",
+      },
+      {
+        name: "C",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+        color: "hover:border-blue-400 hover:shadow-blue-100 dark:hover:shadow-blue-900/30",
+      },
+      {
+        name: "JavaScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        color: "hover:border-yellow-300 hover:shadow-yellow-100 dark:hover:shadow-yellow-900/30",
+      },
+    ],
+  },
+  {
+    label: "Frontend",
+    skills: [
+      {
+        name: "React",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        color: "hover:border-cyan-400 hover:shadow-cyan-100 dark:hover:shadow-cyan-900/30",
+      },
+      {
+        name: "HTML",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+        color: "hover:border-orange-400 hover:shadow-orange-100 dark:hover:shadow-orange-900/30",
+      },
+      {
+        name: "CSS",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+        color: "hover:border-blue-400 hover:shadow-blue-100 dark:hover:shadow-blue-900/30",
+      },
+    ],
+  },
+  {
+    label: "Backend & DB",
+    skills: [
+      {
+        name: "Django",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",
+        color: "hover:border-green-500 hover:shadow-green-100 dark:hover:shadow-green-900/30",
+      },
+      {
+        name: "MongoDB",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+        color: "hover:border-green-400 hover:shadow-green-100 dark:hover:shadow-green-900/30",
+      },
+      {
+        name: "MySQL",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+        color: "hover:border-blue-500 hover:shadow-blue-100 dark:hover:shadow-blue-900/30",
+      },
+    ],
+  },
+  {
+    label: "AI / ML",
+    skills: [
+      {
+        name: "TensorFlow",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+        color: "hover:border-orange-400 hover:shadow-orange-100 dark:hover:shadow-orange-900/30",
+      },
+      {
+        name: "OpenCV",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg",
+        color: "hover:border-green-400 hover:shadow-green-100 dark:hover:shadow-green-900/30",
+      },
+      {
+        name: "NumPy",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
+        color: "hover:border-blue-400 hover:shadow-blue-100 dark:hover:shadow-blue-900/30",
+      },
+    ],
+  },
+  {
+    label: "Tools",
+    skills: [
+      {
+        name: "Git",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+        color: "hover:border-orange-500 hover:shadow-orange-100 dark:hover:shadow-orange-900/30",
+      },
+      {
+        name: "GitHub",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        color: "hover:border-gray-500 hover:shadow-gray-100 dark:hover:shadow-gray-700/30",
+      },
+      {
+        name: "VS Code",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+        color: "hover:border-blue-500 hover:shadow-blue-100 dark:hover:shadow-blue-900/30",
+      },
+    ],
+  },
 ];
 
-export default function Skills() {
-  return (
-    <section id="skills" className="py-24 bg-zinc-950 text-white px-8">
-      <h2 className="text-4xl font-bold text-center text-red-500 mb-16">
-        My Skills
-      </h2>
+const ALL_LABEL = "All";
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.3 }}
-            className="group bg-zinc-900 p-6 rounded-xl flex flex-col items-center justify-center 
-                       border border-zinc-800 
-                       hover:border-red-500 
-                       hover:shadow-[0_0_25px_rgba(239,68,68,0.3)] 
-                       transition-all duration-300"
-          >
-            <div className="text-4xl mb-4 text-gray-300 group-hover:text-red-500 transition">
-              {skill.icon}
+export default function Skills() {
+  const [activeCategory, setActiveCategory] = useState(ALL_LABEL);
+
+  const categories = [ALL_LABEL, ...skillCategories.map((c) => c.label)];
+
+  const visibleSkills =
+    activeCategory === ALL_LABEL
+      ? skillCategories.flatMap((c) => c.skills)
+      : skillCategories.find((c) => c.label === activeCategory)?.skills ?? [];
+
+  return (
+    <section
+      id="skills"
+      className="py-20 bg-gray-50 dark:bg-gray-800/50 transition-colors duration-300"
+    >
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+            My <span className="text-indigo-500">Skills</span>
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+            Technologies and tools I work with to build intelligent, scalable systems.
+          </p>
+        </div>
+
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                activeCategory === cat
+                  ? "bg-indigo-500 text-white shadow-md shadow-indigo-200 dark:shadow-indigo-900/40"
+                  : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600 hover:text-indigo-500 dark:hover:text-indigo-400"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Skill Cards Grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+          {visibleSkills.map((skill) => (
+            <div
+              key={skill.name}
+              className={`group flex flex-col items-center justify-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-2xl border-2 border-transparent shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default ${skill.color}`}
+            >
+              <img
+                src={skill.icon}
+                alt={skill.name}
+                className="w-10 h-10 object-contain transition-transform duration-200 group-hover:scale-110"
+              />
+              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+                {skill.name}
+              </span>
             </div>
-            <p className="text-sm font-medium text-gray-300 group-hover:text-white transition">
-              {skill.name}
-            </p>
-          </motion.div>
-        ))}
+          ))}
+        </div>
+
+        {/* Currently Learning */}
+        <div className="mt-12 flex flex-col items-center gap-3">
+          <p className="text-sm text-gray-400 dark:text-gray-500 font-medium uppercase tracking-widest">
+            Currently Exploring
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {["LangChain", "LLMs", "Next.js", "Docker"].map((item) => (
+              <span
+                key={item}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-semibold border border-indigo-100 dark:border-indigo-800"
+              >
+                <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-pulse" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
