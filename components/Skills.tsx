@@ -79,26 +79,7 @@ const skillCategories: Category[] = [
       },
     ],
   },
-  {
-    label: "AI / ML",
-    skills: [
-      {
-        name: "TensorFlow",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
-        color: "hover:border-orange-400 hover:shadow-orange-100 dark:hover:shadow-orange-900/30",
-      },
-      {
-        name: "OpenCV",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg",
-        color: "hover:border-green-400 hover:shadow-green-100 dark:hover:shadow-green-900/30",
-      },
-      {
-        name: "NumPy",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
-        color: "hover:border-blue-400 hover:shadow-blue-100 dark:hover:shadow-blue-900/30",
-      },
-    ],
-  },
+  
   {
     label: "Tools",
     skills: [
@@ -191,7 +172,7 @@ export default function Skills() {
             Currently Exploring
           </p>
           <div className="flex flex-wrap justify-center gap-2">
-            {["LangChain", "LLMs", "Next.js", "Docker"].map((item) => (
+            {["LangChain", "LLMs", "Node.js", "Docker"].map((item) => (
               <span
                 key={item}
                 className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-semibold border border-indigo-100 dark:border-indigo-800"
