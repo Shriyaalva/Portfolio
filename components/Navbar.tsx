@@ -87,13 +87,20 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   // On mount, read saved preference
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
+useEffect(() => {
+  const saved = localStorage.getItem("theme");
+
+  if (saved) {
+    const isDark = saved === "dark";
+    setDarkMode(isDark);
+    document.documentElement.classList.toggle("dark", isDark);
+  } else {
+    // Use system preference
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setDarkMode(prefersDark);
+    document.documentElement.classList.toggle("dark", prefersDark);
+  }
+}, []);
 
   // Handle scroll for navbar shadow
   useEffect(() => {
@@ -103,16 +110,13 @@ export default function Navbar() {
   }, []);
 
   const toggleDarkMode = () => {
-    const next = !darkMode;
-    setDarkMode(next);
-    if (next) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
+  setDarkMode((prev) => {
+    const next = !prev;
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+    return next;
+  });
+};
 
   const navLinks = [
     { href: "#about", label: "About" },
@@ -133,12 +137,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity"
-          >
-            Shriya<span className="text-indigo-500">.</span>
-          </Link>
+        <Link
+    href="/"
+  className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight hover:opacity-80 transition-opacity"
+>
+  Hello there<span className="text-indigo-500">.</span>
+</Link>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-6">

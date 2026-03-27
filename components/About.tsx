@@ -15,7 +15,7 @@ export default function About() {
         viewport={{ once: true }}
         className="max-w-5xl text-center"
       >
-        <h2 className="text-6xl md:text-7xl font-bold text-red-500 mb-10">
+        <h2 className="text-6xl md:text-7xl font-bold text-indigo-500 mb-10">
           About Me
         </h2>
 
