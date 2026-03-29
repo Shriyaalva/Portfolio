@@ -21,8 +21,8 @@ export default function About() {
 
         <p className="text-2xl md:text-3xl leading-relaxed text-gray-300 font-light">
           I’m a B.Tech Information Science student passionate about building 
-          intelligent systems, AI-driven applications, and scalable web platforms.
-          I focus on solving real-world problems through technology while continuously 
+          intelligent systems, AI driven applications, and scalable web platforms.
+          I focus on solving real world problems through technology while continuously 
           improving my leadership and collaborative skills.
         </p>
       </motion.div>

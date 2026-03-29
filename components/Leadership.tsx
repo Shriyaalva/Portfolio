@@ -88,7 +88,7 @@ export default function Leadership() {
 
               <ul className="space-y-3 text-gray-600 dark:text-gray-300 text-sm leading-relaxed list-disc list-inside">
                 <li>Led overall coordination and execution of theatre events.</li>
-                <li>Organized intra- and inter-college performances.</li>
+                <li>Organized intra and inter college performances.</li>
                 <li>Core organizer of Navarasa at Incridea fest.</li>
                 <li>Managed teams and delegated responsibilities.</li>
                 <li>Strengthened leadership and event management skills.</li>

@@ -18,7 +18,7 @@ const projects: Project[] = [
     description:
       "AI-powered agricultural assistant for crop recommendation and plant disease detection.",
     details:
-      "Implemented XGBoost for crop prediction and ResNet CNN for image-based disease classification. Helps farmers make data-driven decisions for better yield.",
+      "Implemented XGBoost for crop prediction and ResNet CNN for image based disease classification. Helps farmers make data-driven decisions for better yield.",
     image: "/AGRIBOT.png",
     tags: ["Python", "XGBoost", "ResNet", "Django", "HTML", "CSS", "JavaScript"],
     github: "https://github.com/Shriyaalva/agribot",
@@ -89,7 +89,7 @@ export default function Projects() {
             My <span className="text-indigo-500">Projects</span>
           </h2>
           <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
-            Things I&apos;ve built — from AI-powered tools to full-stack web applications.
+            Things I&apos;ve built — from AI-powered tools to full stack web applications.
           </p>
         </div>
 

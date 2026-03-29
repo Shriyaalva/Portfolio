@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const TYPING_PHRASES = ["Full-Stack Developer", "AI/ML Engineer"];
+const TYPING_PHRASES = ["Software Developer"];
 
 export default function Hero() {
   const [displayedText, setDisplayedText] = useState("");
@@ -57,7 +57,7 @@ export default function Hero() {
           {/* Greeting badge */}
           <div className="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-medium px-4 py-1.5 rounded-full mb-5">
             <span className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
-            Open to internships & collaborations
+            Open to internships & job opportunity
           </div>
 
           {/* Name */}
@@ -78,7 +78,7 @@ export default function Hero() {
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto md:mx-0 leading-relaxed mb-8">
             B.Tech Information Science student passionate about building
             intelligent systems, scalable web applications, and real-world
-            AI-powered solutions.
+           solutions.
           </p>
 
           {/* CTA Buttons */}
