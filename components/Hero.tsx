@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const TYPING_PHRASES = ["Software Developer"];
+const TYPING_PHRASES = ["2026 Graduate"];
 
 export default function Hero() {
   const [displayedText, setDisplayedText] = useState("");

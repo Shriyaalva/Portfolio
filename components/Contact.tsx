@@ -162,8 +162,7 @@ export default function Contact() {
                 </span>
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                Currently looking for internships and project collaborations in
-                AI/ML and Full-Stack development.
+                Currently looking for internships and project collaborations,full time opportunity.
               </p>
             </div>
           </div>

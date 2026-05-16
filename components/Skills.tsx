@@ -79,7 +79,36 @@ const skillCategories: Category[] = [
       },
     ],
   },
-  
+  {
+  label: "CN",
+  skills: [
+    {
+      name: "DNS",
+      icon: "https://cdn-icons-png.flaticon.com/512/4248/4248443.png",
+      color: "hover:border-blue-400 hover:shadow-blue-100 dark:hover:shadow-blue-900/30",
+    },
+    {
+      name: "HTTP",
+      icon: "https://cdn-icons-png.flaticon.com/512/2165/2165004.png",
+      color: "hover:border-orange-400 hover:shadow-orange-100 dark:hover:shadow-orange-900/30",
+    },
+    {
+      name: "TCP/IP",
+      icon: "https://cdn-icons-png.flaticon.com/512/2885/2885417.png",
+      color: "hover:border-green-400 hover:shadow-green-100 dark:hover:shadow-green-900/30",
+    },
+    {
+      name: "SSL/TLS",
+      icon: "https://cdn-icons-png.flaticon.com/512/3064/3064197.png",
+      color: "hover:border-purple-400 hover:shadow-purple-100 dark:hover:shadow-purple-900/30",
+    },
+    {
+      name: "Networking Fundamentals",
+      icon: "https://cdn-icons-png.flaticon.com/512/1055/1055687.png",
+      color: "hover:border-cyan-400 hover:shadow-cyan-100 dark:hover:shadow-cyan-900/30",
+    },
+  ],
+},
   {
     label: "Tools",
     skills: [
